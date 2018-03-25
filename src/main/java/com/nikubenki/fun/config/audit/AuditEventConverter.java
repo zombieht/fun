@@ -1,7 +1,6 @@
 package com.nikubenki.fun.config.audit;
 
 import com.nikubenki.fun.domain.PersistentAuditEvent;
-
 import org.springframework.boot.actuate.audit.AuditEvent;
 import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Component;
@@ -39,7 +38,7 @@ public class AuditEventConverter {
     public AuditEvent convertToAuditEvent(PersistentAuditEvent persistentAuditEvent) {
         Instant instant = persistentAuditEvent.getAuditEventDate().atZone(ZoneId.systemDefault()).toInstant();
         return new AuditEvent(Date.from(instant), persistentAuditEvent.getPrincipal(),
-            persistentAuditEvent.getAuditEventType(), convertDataToObjects(persistentAuditEvent.getData()));
+                persistentAuditEvent.getAuditEventType(), convertDataToObjects(persistentAuditEvent.getData()));
     }
 
     /**

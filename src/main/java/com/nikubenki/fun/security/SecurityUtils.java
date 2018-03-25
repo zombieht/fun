@@ -43,14 +43,14 @@ public final class SecurityUtils {
         Authentication authentication = securityContext.getAuthentication();
         if (authentication != null) {
             return authentication.getAuthorities().stream()
-                .noneMatch(grantedAuthority -> grantedAuthority.getAuthority().equals(AuthoritiesConstants.ANONYMOUS));
+                    .noneMatch(grantedAuthority -> grantedAuthority.getAuthority().equals(AuthoritiesConstants.ANONYMOUS));
         }
         return false;
     }
 
     /**
      * If the current user has a specific authority (security role).
-     *
+     * <p>
      * <p>The name of this method comes from the isUserInRole() method in the Servlet API</p>
      *
      * @param authority the authority to check
@@ -61,7 +61,7 @@ public final class SecurityUtils {
         Authentication authentication = securityContext.getAuthentication();
         if (authentication != null) {
             return authentication.getAuthorities().stream()
-                .anyMatch(grantedAuthority -> grantedAuthority.getAuthority().equals(authority));
+                    .anyMatch(grantedAuthority -> grantedAuthority.getAuthority().equals(authority));
         }
         return false;
     }

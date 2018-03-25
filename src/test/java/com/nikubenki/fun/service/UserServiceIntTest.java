@@ -1,25 +1,25 @@
 package com.nikubenki.fun.service;
 
 import com.nikubenki.fun.FunApp;
-import com.nikubenki.fun.domain.User;
 import com.nikubenki.fun.config.Constants;
+import com.nikubenki.fun.domain.User;
 import com.nikubenki.fun.repository.UserRepository;
 import com.nikubenki.fun.service.dto.UserDTO;
-import java.time.ZonedDateTime;
 import com.nikubenki.fun.service.util.RandomUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.test.context.junit4.SpringRunner;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import java.util.Optional;
-import java.util.List;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
-import static org.assertj.core.api.Assertions.*;
+import java.time.ZonedDateTime;
+import java.util.List;
+import java.util.Optional;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Test class for the UserResource REST controller.
@@ -123,7 +123,7 @@ public class UserServiceIntTest {
         final PageRequest pageable = new PageRequest(0, (int) userRepository.count());
         final Page<UserDTO> allManagedUsers = userService.getAllManagedUsers(pageable);
         assertThat(allManagedUsers.getContent().stream()
-            .noneMatch(user -> Constants.ANONYMOUS_USER.equals(user.getLogin())))
-            .isTrue();
+                .noneMatch(user -> Constants.ANONYMOUS_USER.equals(user.getLogin())))
+                .isTrue();
     }
 }

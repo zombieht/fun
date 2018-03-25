@@ -3,7 +3,8 @@ package com.nikubenki.fun.service.mapper;
 import com.nikubenki.fun.domain.Authority;
 import com.nikubenki.fun.domain.User;
 import com.nikubenki.fun.service.dto.UserDTO;
-import org.mapstruct.*;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
 import java.util.List;
 import java.util.Set;
@@ -40,9 +41,9 @@ public interface UserMapper {
         return user;
     }
 
-    default Set<String> stringsFromAuthorities (Set<Authority> authorities) {
+    default Set<String> stringsFromAuthorities(Set<Authority> authorities) {
         return authorities.stream().map(Authority::getName)
-            .collect(Collectors.toSet());
+                .collect(Collectors.toSet());
     }
 
     default Set<Authority> authoritiesFromStrings(Set<String> strings) {

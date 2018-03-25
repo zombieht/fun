@@ -1,7 +1,6 @@
 package com.nikubenki.fun.security;
 
 import com.nikubenki.fun.config.Constants;
-
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.stereotype.Component;
 
